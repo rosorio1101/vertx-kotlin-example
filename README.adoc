@@ -18,7 +18,7 @@ To package your application:
 
 To run your application:
 ```
-./gradlew clean run
+./start sh
 ```
 
 == Help
