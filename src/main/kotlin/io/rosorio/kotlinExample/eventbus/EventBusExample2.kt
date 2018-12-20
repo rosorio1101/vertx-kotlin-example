@@ -2,7 +2,7 @@ package io.rosorio.kotlinExample.eventbus
 
 import io.vertx.core.AbstractVerticle
 
-val ADDRESS = "verticle.eventbus.2"
+private const val ADDRESS = "verticle.eventbus.2"
 
 class Consumer : AbstractVerticle() {
 
