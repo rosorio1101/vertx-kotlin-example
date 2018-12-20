@@ -1,0 +1,19 @@
+version: "3.3"
+services:
+  example:
+    build: .
+    ports:
+    - "8080:8080"
+    environment:
+    - VERTICLE_NAME=io.rosorio.kotlinExample.MainVerticle
+    networks:
+    - example
+  mongo:
+    image: mongo
+    networks:
+    - example
+    restart: always
+    ports:
+    - "27019:27017"
+networks:
+  example:

@@ -27,10 +27,9 @@ class MainVerticle : CoroutineVerticle() {
 
     val mongoClient = MongoClient.createShared(vertx, json {
       obj(
-        "host" to "127.0.0.1",
+        "host" to "mongo",
         "port" to 27017,
         "db_name" to "Tasks"
-
       )
     })
 
@@ -38,8 +37,8 @@ class MainVerticle : CoroutineVerticle() {
     taskController = TaskController(taskRepository)
     taskRouter = TaskRouter(taskController)
 
-    //deleteData()
-    //createFakeData()
+    deleteData()
+    createFakeData()
 
     val server = vertx.createHttpServer()
     val mainRouter = createMainRouter(vertx)
@@ -68,7 +67,7 @@ class MainVerticle : CoroutineVerticle() {
   private suspend fun createFakeData() {
     logger.info("create fake data")
     val tasks = mutableListOf<Task>()
-    for(i in 1..100000) {
+    for(i in 1..1000) {
       tasks.add(Task(
         name = "MyTask$i"
       ))
